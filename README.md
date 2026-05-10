@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
-## Glamira ecommerce exploring using Google Cloud
+## PJ5 - Glamira exploring Google Cloud
 
-[![Product Name Screen Shot][product-screenshot]]
+![Product Name Screen Shot][product-screenshot]
 
 Setting up infrastructure and understanding data pipelines with GCP, MongoDB, and Python.
 
