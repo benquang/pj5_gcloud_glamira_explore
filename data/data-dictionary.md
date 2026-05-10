@@ -1,5 +1,4 @@
-## Collection - summary:
----
+## Collection (summary):
 __Fields__
 
 - __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
@@ -32,5 +31,3 @@ __Fields__
 - `value_id` (string, optional/empty)
 
 You will like those projects!
-
----
