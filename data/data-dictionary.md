@@ -1,13 +1,8 @@
 ## Collection (summary):
 __Fields__
 
-- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
-  resize in browser.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
-  i18n with plurals support and easy syntax.
-
 - `_id` (ObjectId)
-- `time_stamp` (int) – UNIX timestamp
+- `time_stamp` (int) – UNIX timestampz
 - `ip` (string) – IPv4 address
 - `user_agent` (string)
 - `resolution` (string) – e.g., 375x667
@@ -30,4 +25,8 @@ __Fields__
 - `value_label` (string, optional/empty)
 - `value_id` (string, optional/empty)
 
-You will like those projects!
+
+_Product id rule (important for step 6)__
+
+- `product_id` if present.
+- else use `viewing_product_id`
