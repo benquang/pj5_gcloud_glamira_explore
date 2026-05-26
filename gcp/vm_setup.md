@@ -1,4 +1,4 @@
-## GCS Setup
+## VM Setup
 
 A. Create a VM instance
 
