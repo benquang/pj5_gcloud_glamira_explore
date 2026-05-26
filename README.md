@@ -11,7 +11,7 @@ Setting up infrastructure and understanding data pipelines with GCP, MongoDB, an
 This is an example of how you may give instructions on setting up your project
 
 
-## GCP Setup
+## Infrastructure Setup
 
 Overview: create a GCP project, enable billing, and enable the following APIs: Compute Engine, Cloud Storage, and (optionally) Cloud Logging.
 
@@ -68,6 +68,10 @@ db.visits.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+![IMG1 Screen Shot][img1]
+
+An example of product informations crawling
+
 Following steps below
 
 _Folloing steps in this link [Project tasks](https://unigap-tech-coaching.notion.site/Project-05-Data-Collection-Storage-Foundation-fd50b5b264a04576b0def7c0ba1f48af)_
@@ -117,7 +121,7 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: docs/gvto.svg
+
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -134,3 +138,6 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+
+[product-screenshot]: docs/gvto.svg
+[img1]: docs/img1.webp
