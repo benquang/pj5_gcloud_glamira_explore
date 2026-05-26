@@ -1,7 +1,7 @@
 ## Queries example
 
 // Count documents
-/db.summary.countDocuments()
+`db.summary.countDocuments()`
 
 // Inspect one document
 /db.summary.findOne()
