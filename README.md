@@ -8,24 +8,40 @@ Setting up infrastructure and understanding data pipelines with GCP, MongoDB, an
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This is an example of how you may give instructions on setting up your project
 
-### Prerequisites
-
-Prepare data, scripts in your local machine
-* Download this repository
-  ```sh
-  git clone https://github.com/benquang/pj5_gcloud_glamira_explore.git
-  cd pj5_gcloud_glamira_explore
-  ```
-
-* Install necessary packages
-  ```sh
-  pip install -r requirements.txt
-  ```
 
 ### Installation
+Follow these minimal steps to reproduce the project environment on GCP.
+
+## gcp-setup
+
+Overview: create a GCP project, enable billing, and enable the following APIs: Compute Engine, Cloud Storage, and (optionally) Cloud Logging.
+
+### gcs_setup
+
+1. Create a GCS bucket for raw and processed data: gsutil mb -p YOUR_PROJECT -c STANDARD -l YOUR_REGION gs://your-bucket-name
+2. Set lifecycle rules or ACLs as needed and upload initial data: gsutil cp data/* gs://your-bucket-name/raw/
+
+### vm_setup
+
+1. Create a VM (Compute Engine) with a public IP or allow SSH via Cloud IAP.
+	- Example: gcloud compute instances create vm-mongo --zone=YOUR_ZONE --machine-type=e2-medium --image-family=debian-11 --image-project=debian-cloud
+2. SSH into the VM: gcloud compute ssh vm-mongo --zone=YOUR_ZONE
+3. Install MongoDB (or use a packaged MongoDB on the VM). On Debian/Ubuntu:
+	- sudo apt update && sudo apt install -y mongodb
+4. Start and enable MongoDB: sudo systemctl enable --now mongodb
+
+### mongo import data and queries
+
+1. Prepare JSON or CSV export files locally or in the VM under /tmp/data/.
+2. Import into MongoDB using mongoimport:
+	- mongoimport --db glamira --collection visits --file /tmp/data/visits.json --jsonArray
+3. Connect to mongo shell to run queries: mongo --eval "db.visits.find().limit(5).pretty()"
+4. Example queries:
+	- Count documents: db.visits.countDocuments({})
+	- Index by IP: db.visits.createIndex({ip:1})
+	- Aggregate by country (if geo field exists): db.visits.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
 
 <!-- USAGE EXAMPLES -->
 ## Usage
