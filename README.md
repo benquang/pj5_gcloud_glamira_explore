@@ -11,19 +11,22 @@ Setting up infrastructure and understanding data pipelines with GCP, MongoDB, an
 This is an example of how you may give instructions on setting up your project
 
 
-### Installation
-Follow these minimal steps to reproduce the project environment on GCP.
-
-## gcp-setup
+## GCP Setup
 
 Overview: create a GCP project, enable billing, and enable the following APIs: Compute Engine, Cloud Storage, and (optionally) Cloud Logging.
 
-### gcs_setup
+### GCS setup
 
-1. Create a GCS bucket for raw and processed data: gsutil mb -p YOUR_PROJECT -c STANDARD -l YOUR_REGION gs://your-bucket-name
-2. Set lifecycle rules or ACLs as needed and upload initial data: gsutil cp data/* gs://your-bucket-name/raw/
+1. Create a GCS bucket for raw and processed data:
+	```bash
+	gsutil mb -p YOUR_PROJECT -c STANDARD -l YOUR_REGION gs://your-bucket-name
+	```
+2. Set lifecycle rules or ACLs as needed and upload initial data:
+	```bash
+	gsutil cp data/* gs://your-bucket-name/raw/
+	```
 
-### vm_setup
+### Vm setup
 
 1. Create a VM (Compute Engine) with a public IP or allow SSH via Cloud IAP.
 	- Example: gcloud compute instances create vm-mongo --zone=YOUR_ZONE --machine-type=e2-medium --image-family=debian-11 --image-project=debian-cloud
@@ -32,7 +35,7 @@ Overview: create a GCP project, enable billing, and enable the following APIs: C
 	- sudo apt update && sudo apt install -y mongodb
 4. Start and enable MongoDB: sudo systemctl enable --now mongodb
 
-### mongo import data and queries
+### MongoDB import data & query
 
 1. Prepare JSON or CSV export files locally or in the VM under /tmp/data/.
 2. Import into MongoDB using mongoimport:
