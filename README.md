@@ -28,23 +28,42 @@ Overview: create a GCP project, enable billing, and enable the following APIs: C
 
 ### Vm setup
 
+Use a Bash shell for these commands.
+
 1. Create a VM (Compute Engine) with a public IP or allow SSH via Cloud IAP.
-	- Example: gcloud compute instances create vm-mongo --zone=YOUR_ZONE --machine-type=e2-medium --image-family=debian-11 --image-project=debian-cloud
-2. SSH into the VM: gcloud compute ssh vm-mongo --zone=YOUR_ZONE
+```bash
+gcloud compute instances create vm-mongo --zone=YOUR_ZONE --machine-type=e2-medium --image-family=debian-11 --image-project=debian-cloud
+```
+2. SSH into the VM:
+```bash
+gcloud compute ssh vm-mongo --zone=YOUR_ZONE
+```
 3. Install MongoDB (or use a packaged MongoDB on the VM). On Debian/Ubuntu:
-	- sudo apt update && sudo apt install -y mongodb
-4. Start and enable MongoDB: sudo systemctl enable --now mongodb
+```bash
+sudo apt update && sudo apt install -y mongodb
+```
+4. Start and enable MongoDB:
+```bash
+sudo systemctl enable --now mongodb
+```
 
 ### MongoDB import data & query
 
 1. Prepare JSON or CSV export files locally or in the VM under /tmp/data/.
 2. Import into MongoDB using mongoimport:
-	- mongoimport --db glamira --collection visits --file /tmp/data/visits.json --jsonArray
-3. Connect to mongo shell to run queries: mongo --eval "db.visits.find().limit(5).pretty()"
+```bash
+mongoimport --db glamira --collection visits --file /tmp/data/visits.json --jsonArray
+```
+3. Connect to mongo shell to run queries:
+```bash
+mongo --eval "db.visits.find().limit(5).pretty()"
+```
 4. Example queries:
-	- Count documents: db.visits.countDocuments({})
-	- Index by IP: db.visits.createIndex({ip:1})
-	- Aggregate by country (if geo field exists): db.visits.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
+```bash
+db.visits.countDocuments({})
+db.visits.createIndex({ip:1})
+db.visits.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
