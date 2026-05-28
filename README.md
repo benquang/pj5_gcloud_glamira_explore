@@ -52,17 +52,17 @@ sudo systemctl enable --now mongodb
 1. Prepare JSON or CSV export files locally or in the VM under /tmp/data/.
 2. Import into MongoDB using mongoimport:
 ```bash
-mongoimport --db glamira --collection visits --file /tmp/data/visits.json --jsonArray
+mongoimport --db glamira --collection summary --file /tmp/data/summary.json --jsonArray
 ```
 3. Connect to mongo shell to run queries:
 ```bash
-mongo --eval "db.visits.find().limit(5).pretty()"
+mongo --eval "db.glamira.find().limit(5).pretty()"
 ```
 4. Example queries:
 ```bash
-db.visits.countDocuments({})
-db.visits.createIndex({ip:1})
-db.visits.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
+db.summary.countDocuments({})
+db.summary.createIndex({ip:1})
+db.summary.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
 ```
 
 <!-- USAGE EXAMPLES -->
@@ -71,8 +71,6 @@ db.visits.aggregate([{ $group: { _id: "$country", count: { $sum: 1 } } }])
 ![IMG1 Screen Shot][img1]
 
 An example of product informations crawling
-
-Following steps below
 
 _Folloing steps in this link [Project tasks](https://unigap-tech-coaching.notion.site/Project-05-Data-Collection-Storage-Foundation-fd50b5b264a04576b0def7c0ba1f48af)_
 
