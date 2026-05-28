@@ -11,7 +11,7 @@ Setting up infrastructure and understanding data pipelines with GCP, MongoDB, an
 This is an example of how you may give instructions on setting up your project
 
 
-## Infrastructure Setup
+## Setup
 
 Overview: create a GCP project, enable billing, and enable the following APIs: Compute Engine, Cloud Storage, and (optionally) Cloud Logging.
 
